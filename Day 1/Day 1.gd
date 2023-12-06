@@ -7,7 +7,7 @@ var sum = 0
 func _ready():
 	file = loadMe.new().loadFile("res://Day1.txt")
 	rawClue = file.split("\n",false)
-#	check()
+	check()
 	check2()
 
 #------------------------------------------------------------------------------*/
@@ -26,7 +26,6 @@ func check():
 			if rawClue[i][chr].is_valid_int():
 				n += str(rawClue[i][chr])
 				break
-		print (n)
 		sum += int(n)
 	print(sum)
 
@@ -59,29 +58,20 @@ func check2():
 				if chr < firstIndex:
 					firstIndex = chr
 					firstMember = rawClue[i][chr]
-#					print("print situa particolare")
 		for chr2 in range(rawClue[i].length()-1,-1,-1):
 			if rawClue[i][chr2].is_valid_int():
 				if chr2 > secondIndex:
-#					print("before change",str(secondIndex))
 					secondIndex = chr2
 					secondMember = rawClue[i][chr2]
-#		print(firstMember)
-#		print(secondMember)
 		if firstMember.is_valid_int():
 			finalNumber = firstMember
 		else:
-#			print(str("stringa", str(numbers.find(firstMember)+1)))
 			finalNumber = str(numbers.find(firstMember)+1)
 		if secondMember.is_valid_int():
 			finalNumber = finalNumber+secondMember
-#			print ("final number",str(finalNumber))
 		else:
 			finalNumber = str(finalNumber,numbers.find(secondMember)+1)
 		print(finalNumber)
 		sum += int(finalNumber)
 		
 	print(sum)
-#		print("index: ",str(firstIndex))
-#		print(firstMember)
-#		print(secondMember)
